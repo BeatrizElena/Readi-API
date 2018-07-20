@@ -1,5 +1,11 @@
 Rails[![General Assembly Logo](https://camo.githubusercontent.com/1a91b05b8f4d44b5bbfb83abac2b0996d8e26c92/687474703a2f2f692e696d6775722e636f6d2f6b6538555354712e706e67)](https://generalassemb.ly/education/web-development-immersive)
 
+<script src="https://gist.git.generalassemb.ly/beatrizelena/c650a5959f3ddbfa268e1d8904134455.js"></script>
+
+
+
+
+
 # rails-api-template
 
 A template for starting projects with `rails-api`. Includes authentication.
