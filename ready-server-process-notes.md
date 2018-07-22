@@ -166,9 +166,32 @@ Finished user auth testing with curl scripts
    Completed 201 Created in 36ms (Views: 3.1ms | ActiveRecord: 15.2ms)
    ```
 
-6. 
+   
 
-7. 
+   localhost:4741 messages
+
+   Action taken: `bin/rails db:migrate`
+
+   on `localhost:4741/doctorprofiles` saw:
+
+   ```json
+   {
+   "doctorprofiles": [
+   {
+   "id": 1,
+   "first_name": "Mary",
+   "last_name": "Ortiz",
+   "clinic_affiliation": "JF/Jimmy Fund",
+   "sub_specialty_english": "Sarcoma",
+   "sub_specialty_spanish": "Sarcoma",
+   "phone_nuber_string": null,
+   "notes_string": null
+   }
+   ]
+   }
+   ```
+
+   
 
 
 
