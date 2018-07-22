@@ -1,37 +1,16 @@
-Rails[![General Assembly Logo](https://camo.githubusercontent.com/1a91b05b8f4d44b5bbfb83abac2b0996d8e26c92/687474703a2f2f692e696d6775722e636f6d2f6b6538555354712e706e67)](https://generalassemb.ly/education/web-development-immersive)
-
-<script src="https://gist.git.generalassemb.ly/beatrizelena/c650a5959f3ddbfa268e1d8904134455.js"></script>
-
-
-
-
-
 # rails-api-template
 
 A template for starting projects with `rails-api`. Includes authentication.
 
-At the beginning of each cohort, update the versions in [`Gemfile`](Gemfile).
-
-## Prerequisites
-
--   [rails-api-examples-walkthrough](https://git.generalassemb.ly/ga-wdi-boston/rails-api-examples-walkthrough)
-
 ## Dependencies
 
-Install with `bundle install`.
-
--   [`rails-api`](https://github.com/rails-api/rails-api)
--   [`rails`](https://github.com/rails/rails)
--   [`active_model_serializers`](https://github.com/rails-api/active_model_serializers)
--   [`ruby`](https://www.ruby-lang.org/en/)
--   [`postgres`](http://www.postgresql.org)
+Install with `bundle install`. ( [`rails-api`](https://github.com/rails-api/rails-api), [`rails`](https://github.com/rails/rails), [`active_model_serializers`](https://github.com/rails-api/active_model_serializers), [`ruby`](https://www.ruby-lang.org/en/), [`postgres`](http://www.postgresql.org)).
 
 ## Installation
 
 ### Download Template:
-1.  [Download](../../archive/master.zip) this template.
-1.  Unzip and rename the template directory (`unzip ~/Downloads/rails-api-template-master.zip`)
-1.  Move into the new project and `git init`.
+1.  Download, unzip, and rename the template directory.
+1.  `cd` into the new project and `git init`.
 
 ### Customize Template:
 1.  Empty [`README.md`](README.md) and fill with your own content.
@@ -39,44 +18,54 @@ Install with `bundle install`.
     `RailsApiTemplate`).
 1.  Rename your project database in `config/database.yml` (change
     `'rails-api-template'`).
+1.  Project Structure: This template follows the standard project structure in Rails:
+    - `curl` command scripts are stored in [`scripts`](scripts) with names that correspond to API actions.
+    - User authentication is built-in.
 
 ### Setup Environment:
-1.  Install dependencies with `bundle install`.
-1.  `git add` and `git commit` your changes.
-1.  Create a `.env` for sensitive settings (`touch .env`).
-1.  Generate new `development` and `test` secrets (`bundle exec rails secret`).
-1.  Store them in `.env` with keys `SECRET_KEY_BASE_<DEVELOPMENT|TEST>`
-    respectively.
-1.  In order to make requests to your deployed API, you will need to set
-    `SECRET_KEY_BASE` in the environment of the production API (for example, using `heroku config:set` or the Heroku dashboard).
-1.  In order to make requests from your deployed client application, you will
-    need to set `CLIENT_ORIGIN` in the environment of the production API (for example, `heroku config:set CLIENT_ORIGIN=https://<github-username>.github.io`).
-    See more about deploying to heroku [rails-heroku-setup-guide](https://git.generalassemb.ly/ga-wdi-boston/rails-heroku-setup-guide)
+1. Install dependencies with `bundle install`.
 
-### Setup your database:
-    - bin/rails db:drop (if it already exists)
-    - bin/rails db:create
-    - bin/rails db:migrate
-    - bin/rails db:seed
-    - bin/rails db:examples
+2. `git add` and `git commit` your changes.
 
-  Note: Remember to follow the same commands when setting up your deployed database!
+3. Create a `.env` for sensitive settings (`touch .env`).
 
-### Run your server!
-1. Run the API server with `bin/rails server` or `bundle exec rails server`.
+4. Generate new `development` and `test` secrets (`bundle exec rails secret`).
 
-## Structure
+5. Store them in `.env` with keys `SECRET_KEY_BASE_<DEVELOPMENT|TEST>`
+   respectively.
 
-This template follows the standard project structure in Rails.
+6. To **make requests to** **deployed API**, set
+   `SECRET_KEY_BASE` in the environment of the production API (for example, using `heroku config:set` or the Heroku dashboard).
 
-`curl` command scripts are stored in [`scripts`](scripts) with names that
-correspond to API actions.
+7. To make **requests from** **deployed client** application, set `CLIENT_ORIGIN` in the environment of the production API (for example, `heroku config:set CLIENT_ORIGIN=https://<github-username>.github.io`). See more about deploying to heroku [rails-heroku-setup-guide](https://git.generalassemb.ly/ga-wdi-boston/rails-heroku-setup-guide), 
 
-User authentication is built-in.
+   1. For now, LOCALHOST URLs:
 
-## Tasks
+      Ready-Server `Localhost: 4741`
+      Ready-Client `Localhost: 7165`
 
-Developers should run these often!
+8. **Set up the database: `bin/rails db:create`. **Other db commands:
+
+   - bin/rails db:drop (if it already exists)
+   - bin/rails db:migrate
+   - bin/rails db:seed
+   - bin/rails db:examples
+   - Note: Follow same commands when setting up deployed database!
+
+9. Run the API server:  `bin/rails server` or `bundle exec rails server`.
+
+10. Back in bash:
+
+    1.  `bin/rais generate scaffold doctors` 
+    2. `bin/rails db:migrate`
+    3. <u>Issue:</u> Generated doctors model (table) without columns - will need to edit  migrations file to add the columns. Or,
+    4. add columns with : `rails generate migration add_email_to_users email:string`
+
+11. `bin/rails db:drop`  Decided to start db from scratch.
+
+12. `git status`, `git add` and `git commit`what's been done so far.
+
+13. Run these tasks often:
 
 -   `bin/rails routes` lists the endpoints available in your API.
 -   `bin/rails test` runs automated tests.
@@ -84,19 +73,15 @@ Developers should run these often!
 -   `bin/rails db` opens your database client and loads the correct database.
 -   `bin/rails server` starts the API.
 -   `scripts/*.sh` run various `curl` commands to test the API. See below.
+-   `sql -l` to see a list of databases that I have created.
 
 <!-- TODO -   `rake nag` checks your code style. -->
 <!-- TODO -   `rake lint` checks your code for syntax errors. -->
 
 ## API
 
-Use this as the basis for your own API documentation. Add a new third-level
-heading for your custom entities, and follow the pattern provided for the
-built-in user authentication documentation.
-
-Scripts are included in [`scripts`](scripts) to test built-in actions. Add your
-own scripts to test your custom API. As an alternative, you can write automated
-tests in RSpec to test your API.
+Use this documentation as the basis for my own API documentation. Add a new third-level
+heading for my custom entities, and follow the pattern provided for the built-in user authentication documentation.
 
 ### Authentication
 
@@ -345,14 +330,3 @@ bin/rails db:migrate db:seed db:examples
 heroku run rails db:migrate VERSION=0
 heroku run rails db:migrate db:seed db:examples
 ```
-
-## Additional Resources
-- [rails-heroku-setup-guide](https://git.generalassemb.ly/ga-wdi-boston/rails-heroku-setup-guide)
-- http://guides.rubyonrails.org/api_app.html
-- https://blog.codeship.com/building-a-json-api-with-rails-5/
-
-## [License](LICENSE)
-
-1.  All content is licensed under a CC­BY­NC­SA 4.0 license.
-1.  All software code is licensed under GNU GPLv3. For commercial use or
-    alternative licensing, please contact legal@ga.co.
