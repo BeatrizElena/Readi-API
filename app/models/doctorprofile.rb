@@ -1,0 +1,2 @@
+class Doctorprofile < ApplicationRecord
+end
