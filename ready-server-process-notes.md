@@ -80,17 +80,95 @@ Install with `bundle install`. ( [`rails-api`](https://github.com/rails-api/rail
 
 ###### Sunday - 7/22 (started by creating db again)
 
-1. `bin/rails db:create` Output was:
+`bin/rails db:create` Output was:
 
-   - Created database 'ready-interpreter_development'
+- Created database 'ready-interpreter_development'
 
-   - Created database 'ready-interpreter_test'
+- Created database 'ready-interpreter_test'
 
-2. `bin/rails server`
+`bin/rails server`
 
-3. Created `doctorprofiles`resource `bin/rails generate scaffold doctorprofiles first_name:string last_name:string clinic_affiliation:string sub_specialty_english:string sub_specialty_spanish:string phone_nuber_string notes_string`
+Created `doctorprofiles`resource `bin/rails generate scaffold doctorprofiles first_name:string last_name:string clinic_affiliation:string sub_specialty_english:string sub_specialty_spanish:string phone_nuber_string notes_string`
 
-4. `bin/rails db:migrate` and check migration file for typos or to edit. *For instance, with above commands I had to fix a typo for phone_number and delete _string after phone number and notes.*
+`bin/rails db:migrate` and check migration file for typos or to edit. *For instance, with above commands I had to fix a typo for phone_number and delete _string after phone number and notes.*
+
+Run git status, add and commit.
+
+Ran: 
+
+1. `EMAIL='b@example.com' PASSWORD='123' PASSWORD_CONFIRMATION='123' sh ./scripts/auth/sign-up.sh``
+2. `EMAIL='beatriz@example.com' PASSWORD='123' PASSWORD_CONFIRMATION='123' sh ./scripts/auth/sign-up.sh``
+3. `EMAIL='beatriz.ortiz.2018@example.com' PASSWORD='123' PASSWORD_CONFIRMATION='123' sh ./scripts/auth/sign-up.sh`
+4. and kept thinking that there was a problem with the script because I kept getting a 400 message  that email had already been taken.
+
+Running `User.all` in pry showed me that the three users had been created.
+
+Ran `EMAIL='b@example.com' PASSWORD='123' sh ./scripts/auth/sign-in.sh`and output was: 
+
+```bash
+HTTP/1.1 200 OK
+Content-Type: application/json; charset=utf-8
+ETag: W/"cd54a1daaa223ab2e9180dc5dc895f0f"
+Cache-Control: max-age=0, private, must-revalidate
+X-Request-Id: a2b6a725-3a53-477c-960f-d2fe740cdab1
+X-Runtime: 0.110543
+Vary: Origin
+Transfer-Encoding: chunked
+
+{"user":{"id":1,"email":"b@example.com","token":"BAhJIiU1MDM1OGJkYTJkNzU4ZDM4M2U3Y2E4NzljZjhiNmFkZgY6BkVG--72b857a8ee47c16676edc77d38a4b3d56b0755eb"}}
+```
+
+To test being able to change password, ran: `TOKEN='BAhJIiVhMjA2NmZjODFiYWQ1NzZhMTU1NjA1M2VhNDYxYjZkMQY6BkVG--6d5b0f70d1c652c6f24ddf0532fe18d06a5e8d9c' OLDPW='123' NEWPW='abc' sh ./scripts/auth/change-password.sh
+HTTP/1.1 204 No Content
+Cache-Control: no-cache
+X-Request-Id: a3423301-c59b-4fb2-8a10-1b88e08afafc
+X-Runtime: 0.148018
+Vary: Origin`
+
+1. output was: 
+
+```bas
+HTTP/1.1 204 No Content
+Cache-Control: no-cache
+X-Request-Id: a3423301-c59b-4fb2-8a10-1b88e08afafc
+X-Runtime: 0.148018
+Vary: Origin
+```
+
+To sign out, run: `HTTP/1.1 204 No Content
+Cache-Control: no-cache
+X-Request-Id: 1e021b45-816d-4895-988e-ee2fc7886361
+X-Runtime: 0.016777
+Vary: Origin` Output is the same as for changing password.
+
+Finished user auth testing with curl scripts
+
+###### Testing doctorprofiles with curl scripts
+
+1. Completed `create-doctorprofile.sh`based on the `create-example.sh`provided.
+
+2. Using `TOKEN="BAhJIiUxYTMwZTgxZmUwMzg5OTQzMzc1NzQzNjNjMzc2MmFmZAY6BkVG--31a7ef4194227bda11f173dc3864c33ddd2a03b1" FIRST_NAME='Mary' LAST_NAME='Ortiz' CLINIC_AFFILIATION='JF/Jimmy Fund' SUB_SPECIALTY_ENGLISH='Sarcoma' SUB_SPECIALTY_SPANISH='Sarcoma' PHONE_NUMBER='617-632-3333' NOTES='hello, hello' sh ./scripts/doctorprofiles/create-doctorprofile.sh`, tested it and got this output (1st 2 lines): 
+
+3. ```bash
+   HTTP/1.1 201 Created
+   Location: http://localhost:4741/doctorprofiles/1
+   ```
+
+4. The bin/rails server output was: 
+
+5. ```bash
+   (0.1ms)  BEGIN
+     SQL (10.7ms)  INSERT INTO "doctorprofiles" ("first_name", "last_name", "clinic_affiliation", "sub_specialty_english", "sub_specialty_spanish", "created_at", "updated_at") VALUES (1, 2, 3, 4, 5, 6, $7) RETURNING "id"  [["first_name", "Mary"], ["last_name", "Ortiz"], ["clinic_affiliation", "JF/Jimmy Fund"], ["sub_specialty_english", "Sarcoma"], ["sub_specialty_spanish", "Sarcoma"], ["created_at", "2018-07-22 22:32:59.983301"], ["updated_at", "2018-07-22 22:32:59.983301"]]
+   
+      (0.4ms)  COMMIT
+   [active_model_serializers] Rendered DoctorprofileSerializer with ActiveModelSerializers::Adapter::Json (0.37ms)
+   
+   Completed 201 Created in 36ms (Views: 3.1ms | ActiveRecord: 15.2ms)
+   ```
+
+6. 
+
+7. 
 
 
 
