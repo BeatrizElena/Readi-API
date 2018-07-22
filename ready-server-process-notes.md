@@ -78,6 +78,36 @@ Install with `bundle install`. ( [`rails-api`](https://github.com/rails-api/rail
 <!-- TODO -   `rake nag` checks your code style. -->
 <!-- TODO -   `rake lint` checks your code for syntax errors. -->
 
+###### Sunday - 7/22 (started by creating db again)
+
+1. `bin/rails db:create` Output was:
+
+   - Created database 'ready-interpreter_development'
+
+   - Created database 'ready-interpreter_test'
+
+2. `bin/rails server`
+
+3. Created `doctorprofiles`resource `bin/rails generate scaffold doctorprofiles first_name:string last_name:string clinic_affiliation:string sub_specialty_english:string sub_specialty_spanish:string phone_nuber_string notes_string`
+
+4. `bin/rails db:migrate` and check migration file for typos or to edit. *For instance, with above commands I had to fix a typo for phone_number and delete _string after phone number and notes.*
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 ## API
 
 Use this documentation as the basis for my own API documentation. Add a new third-level
