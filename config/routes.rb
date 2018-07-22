@@ -1,8 +1,8 @@
 # frozen_string_literal: true
 
 Rails.application.routes.draw do
-  resources :doctorprofiles
   # RESTful routes
+  resources :doctorprofiles, except: %i[new edit]
   resources :doctors, except: %i[new edit]
   resources :users, only: %i[index show update]
 
@@ -11,6 +11,8 @@ Rails.application.routes.draw do
   post '/sign-in' => 'users#signin'
   delete '/sign-out' => 'users#signout'
   patch '/change-password' => 'users#changepw'
+
+
 
   # next 4 lines: example taken from games-api (ttt).
   # Are the resources lines above auto-generated or were they part of the template?
