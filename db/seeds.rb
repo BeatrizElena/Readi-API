@@ -10,15 +10,18 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
-doctors = [
-  ['Elizabeth', 'Claus', 'f', Neuro-oncology', 'Low-Grade Glioma', 'Glioblastoma', 'Meningioma', 'Lymphoma, Primary CNS',
-    %w['Gliomas' 'glial cells' 'astrocytes cells' 'oligodendrocytes cells' 'ependymal cells' 'Astrocytic tumors' 'astrocytomas' 'anaplastic astrocytomas' 'glioblastomas'
-    'Oligodendroglial tumors' 'mixed gliomas' 'Meningiomas' 'schwannomas']],
-  [ "Frankreich", 65447374 ],
-  [ "Belgien", 10839905 ],
-  [ "Niederlande", 16680000 ]
-]
+require 'csv'
 
-doctors.each do |profile|
-  Doctors.create( :first_name => profile[0], :last_name => profile[1], :clinic => profile[3], :disease1 => profile[4], :disease2 => profile[5], :disease3 => profile[6])
+csv_text = File.read(Rails.root.join('lib', 'seeds', 'doctor_data.csv'))
+csv = CSV.parse(csv_text, :headers => true, :encoding => 'ISO-8859-1')
+csv.each do |row|
+  t = Doctor.new
+  t.first_name = row['first_name']
+  t.last_name = row['last_name']
+  t.clinic_affiliation = row['clinic_affiliation']
+  t.sub_specialty_english = row['sub_specialty_english']
+  t.sub_specialty_spanish = row['sub_specialty_spanish']
+  t.phone_number = row['phone_number']
+  t.save
+  puts "Doctor: #{t.last_name}, #{t.first_name} saved!"
 end
