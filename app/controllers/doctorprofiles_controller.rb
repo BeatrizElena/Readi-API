@@ -10,6 +10,7 @@ class DoctorprofilesController < ApplicationController
 
   # GET /doctorprofiles/1
   def show
+    @doctorprofile = Doctorprofile.find(params[:id])
     render json: @doctorprofile
   end
 
