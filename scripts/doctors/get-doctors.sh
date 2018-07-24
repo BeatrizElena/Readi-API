@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# sh doctors/get-doctors.sh
+# sh scripts/doctors/get-doctors.sh
 
 curl "http://localhost:4741/doctors" \
 --include \
