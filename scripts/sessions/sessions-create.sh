@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# NOTE="Hello, doc" USERID=3 DOCTORID=2 sh scripts/sessions/sessions-create.sh
+# NOTES="Hello, doc" USERID=3 DOCTORID=2 sh scripts/sessions/sessions-create.sh
 
 curl --include --request POST "http://localhost:4741/sessions" \
   --header "Content-Type: application/json" \
@@ -8,6 +8,6 @@ curl --include --request POST "http://localhost:4741/sessions" \
     "session": {
       "user_id": "'"${USERID}"'",
       "doctor_id": "'"${DOCTORID}"'",
-      "note": "'"${NOTE}"'"
+      "notes": "'"${NOTES}"'"
     }
   }'
