@@ -1,8 +1,8 @@
 # frozen_string_literal: true
 
 Rails.application.routes.draw do
-  resources :sessions
   # RESTful routes
+  resources :sessions
   resources :doctors
   resources :users, only: %i[index show update]
 
