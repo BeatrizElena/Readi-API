@@ -216,14 +216,6 @@ Then, in console, run `Doctor.first` and confirmed that the record was created.
 
 
 
-
-
-
-
-
-
-
-
 ## API
 
 Use this documentation as the basis for my own API documentation. Add a new third-level
