@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# TOKEN='' FIRST_NAME='Bea' LAST_NAME='Ortiz' CLINIC_AFFILIATION='JF/Jimmy Fund' SUB_SPECIALTY_ENGLISH='Sarcoma' SUB_SPECIALTY_SPANISH='Sarcoma' PHONE_NUMBER='617-632-1111' sh script/doctors/update-doctor.sh
+# ID= 2 TOKEN='' FIRST_NAME='Bea' LAST_NAME='Ortiz' CLINIC_AFFILIATION='JF/Jimmy Fund' SUB_SPECIALTY_ENGLISH='Sarcoma' SUB_SPECIALTY_SPANISH='Sarcoma' PHONE_NUMBER='617-632-1111' sh script/doctors/update-doctor.sh
 
 curl "http://localhost:4741/doctors/${ID}" \
 --include \
