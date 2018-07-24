@@ -1,8 +1,8 @@
 # frozen_string_literal: true
 
 Rails.application.routes.draw do
+  resources :sessions
   # RESTful routes
-  resources :doctorprofiles, except: %i[new edit]
   resources :doctors, except: %i[new edit]
   resources :users, only: %i[index show update]
 
