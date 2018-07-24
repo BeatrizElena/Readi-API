@@ -46,6 +46,7 @@ class DoctorsController < ApplicationController
 
     # Only allow a trusted parameter "white list" through.
     def doctor_params
-      params.fetch(:doctor, {})
+      params.require(:doctor)
+            .permit(:first_name, :last_name, :clinic_affiliation, :sub_specialty_english, :sub_specialty_spanish, :phone_number)
     end
 end
