@@ -80,7 +80,6 @@ class UsersController < ProtectedController
   end
 
   def user_params
-    binding.pry
     params.require(:user)
           .permit(:email, :first_name, :last_name)
   end
