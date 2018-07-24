@@ -193,11 +193,26 @@ Finished user auth testing with curl scripts
 
    
 
+###### Monday 7/24
+
+Had my one-on-one with Arjun. Deleted DB and created it again. Created `doctors` directory, table and migration. Copied the table fields from docotrprofiles onto doctors, then deleted doctorprofiles table. With Arjun's help, deleted/updated several files having to do with this change.
+
+Added first_name and last_name column to users which broke with `auth' scripts because controller didn't reflet the changes. Once controller's sign-up function worked, which required me to update was was whitelisted.
+
+2:10 pm Tested all auth and all's working.
 
 
 
+3:10 pm Testing doctor curl scripts. Able to create (POST), get all doctors (GET) and update a doctor (PATCH).
 
+For update, run this curl command:
 
+```bash
+ID=2 TOKEN='BAhJIiU5MjVjMTc5NDUxNWQ1NGRmZTE0NjUwMzRkYTRkNWVlMAY6BkVG--875e829da7b18df2c7ca8a074b63e7c0a60906ae' FIRST_NAME='Pastilla' LAST_NAME='Juanola' CLINIC_AFFILIATION='CC/Crazy Cow' SUB_SPECIALTY_ENGLISH='Craziness' SUB_SPECIALTY_SPANISH='Locura' PHONE_NUMBER='617-632-1111' sh scripts/doctors/update-doctor.sh
+
+```
+
+Then, in console, run `Doctor.first` and confirmed that the record was created.
 
 
 
