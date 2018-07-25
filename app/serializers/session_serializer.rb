@@ -1,5 +1,5 @@
 class SessionSerializer < ActiveModel::Serializer
-  attributes :id, :notes, :user_id, :doctor_id
+  attributes :id, :doctor_id, :notes
   # has_one :user
-  # has_one :doctor
+  belongs_to :doctor
 end

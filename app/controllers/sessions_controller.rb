@@ -1,7 +1,7 @@
-class SessionsController < ApplicationController
+class SessionsController < OpenReadController
   before_action :set_session, only: [:show, :update, :destroy]
 
-  # GET /sessions
+  # GET /sessions (to see everything if signed in)
   def index
     @sessions = Session.all
 
@@ -15,7 +15,7 @@ class SessionsController < ApplicationController
 
   # POST /sessions
   def create
-    @session = Session.new(session_params)
+    @session = current_user.session.build(session_params)
 
     if @session.save
       render json: @session, status: :created, location: @session
@@ -46,6 +46,6 @@ class SessionsController < ApplicationController
 
     # Only allow a trusted parameter "white list" through.
     def session_params
-      params.require(:session).permit(:notes, :user_id, :doctor_id, :date_time)
+      params.require(:session).permit(:doctor_id, :notes)
     end
 end
