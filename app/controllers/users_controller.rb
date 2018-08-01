@@ -47,21 +47,27 @@ class UsersController < ProtectedController
     end
   end
 
-  def index
-    render json: User.all
-  end
+  # def index
+  #   render json: User.all
+  # end
 
-  def show
-    render json: @user
-  end
+  # def show
+  #   render json: @user
+  # end
 
-  def update
-    if @user.update(user_params)
-      render json: @user
-    else
-      render json: @user.errors, status: :unprocessable_entity
-    end
-  end
+  # def update
+  #   if @user.update(user_params)
+  #     render json: @user
+  #   else
+  #     render json: @user.errors, status: :unprocessable_entity
+  #   end
+  # end
+
+  # def destroy
+  #   @user.destroy
+
+  #   head :no_content
+  # end
 
   private
 

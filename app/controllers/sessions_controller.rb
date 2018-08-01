@@ -15,7 +15,7 @@ class SessionsController < OpenReadController
 
   # POST /sessions
   def create
-    @session = current_user.session.build(session_params)
+    @session = current_user.sessions.build(session_params)
 
     if @session.save
       render json: @session, status: :created, location: @session
@@ -46,6 +46,6 @@ class SessionsController < OpenReadController
 
     # Only allow a trusted parameter "white list" through.
     def session_params
-      params.require(:session).permit(:doctor_id, :notes)
+      params.require(:session).permit(:id, :doctor_id, :notes, :date_time)
     end
 end
