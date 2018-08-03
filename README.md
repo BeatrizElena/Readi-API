@@ -1,9 +1,8 @@
-#An App for Medical Interpreters at Dana Farber
+# An App for Medical Interpreters at Dana Farber
 
+#### Project Two from General Assembly's Web Development Immersive Class - Providence
 
-####Project Two from General Assembly's Web Development Immersive Class - Providence
-
-######Overview
+###### Overview
 
 This app is an individual project that has as its main requirements:
 
@@ -20,9 +19,10 @@ This app is an individual project that has as its main requirements:
 
 
 
-######Technologies Used
+###### Technologies Used
 
 - Ruby and Ruby on Rails
+- PostgreSQL
 - JavaScript
 - jQuery
 - HTML5
@@ -31,7 +31,7 @@ This app is an individual project that has as its main requirements:
 
 
 
-######Reflections on the Process
+###### Reflections on the Process
 
 _Working Process_
 
@@ -41,8 +41,6 @@ The front end consisted of forms and submit actions that fired the separate CRUD
 
 _Unsolved Problems / Future Additions_
 
-1. Styling the page to be visually appealing and easier to navigate.
-2. Working on smoother transitions between visible and hidden elements.
-3. Adding the ability to search by doctor's name.
-4. Adding the ability to search which doctors are affiliated to a specific clinic.
+1. Adding the ability to search by doctor's name.
+2. Adding the ability to search which doctors are affiliated to a specific clinic.
 
