@@ -14,35 +14,35 @@ class DoctorsController < OpenReadController
     render json: @doctor
   end
 
-  # # POST /doctors
-  # def create
-  #   @doctor = Doctor.new(doctor_params)
+  # POST /doctors
+  def create
+    @doctor = Doctor.new(doctor_params)
 
-  #   if @doctor.save
-  #     render json: @doctor, status: :created, location: @doctor
-  #   else
-  #     render json: @doctor.errors, status: :unprocessable_entity
-  #   end
-  # end
+    if @doctor.save
+      render json: @doctor, status: :created, location: @doctor
+    else
+      render json: @doctor.errors, status: :unprocessable_entity
+    end
+  end
 
-  # # PATCH/PUT /doctors/1
-  # def update
-  #   if @doctor.update(doctor_params)
-  #     render json: @doctor
-  #   else
-  #     render json: @doctor.errors, status: :unprocessable_entity
-  #   end
-  # end
+  # PATCH/PUT /doctors/1
+  def update
+    if @doctor.update(doctor_params)
+      render json: @doctor
+    else
+      render json: @doctor.errors, status: :unprocessable_entity
+    end
+  end
 
   # DELETE /doctors/1
-  # def destroy
+  def destroy
 
-  #   doctor_sessions = Session.where(:user_id => current_user[:id], :doctor_id => @doctor)
-  #   doctor_sessions.destroy_all
-  #   @doctor.destroy
+    doctor_sessions = Session.where(:user_id => current_user[:id], :doctor_id => @doctor)
+    doctor_sessions.destroy_all
+    @doctor.destroy
 
-  #   head :no_content
-  # end
+    head :no_content
+  end
 
   # private
     # Use callbacks to share common setup or constraints between actions.
