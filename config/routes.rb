@@ -3,7 +3,7 @@
 Rails.application.routes.draw do
   # RESTful routes
   resources :sessions
-  resources :doctors, only: %i[show index]
+  resources :doctors
   # resources :users, only: %i[index show update delete]
 
   # Custom routes
